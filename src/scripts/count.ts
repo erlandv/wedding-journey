@@ -2,7 +2,7 @@ import {
   WEDDING_DATE,
   getTotalElapsedSeconds,
   getElapsedDaySummary,
-  formatIDNumber,
+  formatINTLNumber,
   formatElapsedDaySummary,
 } from "../lib/wedding-time.js";
 import { runWhenDomReady, startSecondTicker } from "./second-ticker.js";
@@ -17,7 +17,7 @@ function update(): void {
   const totalSeconds = getTotalElapsedSeconds(WEDDING_DATE, now);
   const secondsEl = getEl("count-seconds");
   if (secondsEl) {
-    const formattedSeconds = formatIDNumber(totalSeconds);
+    const formattedSeconds = formatINTLNumber(totalSeconds);
     secondsEl.textContent = formattedSeconds;
     secondsEl.setAttribute("aria-label", `${formattedSeconds} seconds since the wedding`);
   }

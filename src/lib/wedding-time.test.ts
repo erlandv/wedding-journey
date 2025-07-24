@@ -8,7 +8,7 @@ import {
   getCrossedAnniversaryYear,
   getTotalElapsedSeconds,
   getElapsedDaySummary,
-  formatIDNumber,
+  formatINTLNumber,
   formatElapsedDaySummary,
 } from "./wedding-time.js";
 
@@ -209,17 +209,17 @@ describe("getElapsedDaySummary", () => {
   });
 });
 
-describe("formatIDNumber", () => {
-  it("formats 1000 as '1.000'", () => {
-    expect(formatIDNumber(1000)).toBe("1.000");
+describe("formatNumber", () => {
+  it("formats 1000 as '1,000'", () => {
+    expect(formatINTLNumber(1000)).toBe("1,000");
   });
 
-  it("formats 1000000 as '1.000.000'", () => {
-    expect(formatIDNumber(1_000_000)).toBe("1.000.000");
+  it("formats 1000000 as '1,000,000'", () => {
+    expect(formatINTLNumber(1_000_000)).toBe("1,000,000");
   });
 
   it("formats 0 as '0'", () => {
-    expect(formatIDNumber(0)).toBe("0");
+    expect(formatINTLNumber(0)).toBe("0");
   });
 });
 
@@ -233,13 +233,13 @@ describe("formatElapsedDaySummary", () => {
     })).toBe("0 minutes");
   });
 
-  it("formats days with Indonesian thousands separators", () => {
+  it("formats days with comma thousands separators", () => {
     expect(formatElapsedDaySummary({
       totalDays: 1000,
       hours: 2,
       minutes: 3,
       seconds: 4,
-    })).toBe("1.000 days, 2 hours, 3 minutes");
+    })).toBe("1,000 days, 2 hours, 3 minutes");
   });
 
   it("omits zero lower units once higher units are present", () => {

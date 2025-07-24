@@ -318,7 +318,7 @@ img, svg {
 }
 
 .seconds-display {
-  font-size: clamp(2.25rem, 8vw, 5.5rem);
+  font-size: clamp(2.25rem, 8vw, 5rem);
   font-weight: 600;
   font-family: var(--font-mono);
   letter-spacing: -0.04em;

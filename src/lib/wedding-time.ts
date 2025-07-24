@@ -154,8 +154,8 @@ export function getElapsedDaySummary(start: Date, end: Date): ElapsedDaySummary 
   return { totalDays, hours, minutes, seconds };
 }
 
-export function formatIDNumber(n: number): string {
-  return new Intl.NumberFormat("id-ID").format(n);
+export function formatINTLNumber(n: number): string {
+  return new Intl.NumberFormat("en-US").format(n);
 }
 
 export function formatElapsedDaySummary(summary: ElapsedDaySummary): string {
@@ -185,7 +185,7 @@ function daysInPreviousMonth(parts: WibDateParts): number {
 }
 
 function formatDurationPart(value: number, unit: string, formatNumber = false): string {
-  const displayValue = formatNumber ? formatIDNumber(value) : String(value);
+  const displayValue = formatNumber ? formatINTLNumber(value) : String(value);
   return `${displayValue} ${value === 1 ? unit : `${unit}s`}`;
 }
 

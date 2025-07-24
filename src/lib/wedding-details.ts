@@ -4,7 +4,7 @@ export const WEDDING_DETAILS = {
   displayDateWithOrdinal: "July 24th, 2025",
   displayTime: "10:00 WIB (UTC+7)",
   timezoneLabel: "WIB (UTC+7)",
-  siteUrl: "https://wdt.erland.me",
+  siteUrl: "https://time.erland.me",
 } as const;
 
 export const TIME_UNITS = [
