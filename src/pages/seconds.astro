@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WeddingInfoSection from "../components/WeddingInfoSection.astro";
+import PageActionLinks from "../components/PageActionLinks.astro";
+import InfinityIcon from "../components/icons/InfinityIcon.astro";
+---
+
+<BaseLayout
+  title={`Forever Counter`}
+  description={`A continuous second-by-second countdown starting from my wedding day.`}
+  currentPath="/seconds"
+>
+  <div class="container-sm page-shell">
+
+    <header class="page-header">
+      <h1 class="page-heading page-heading-spaced">Forever Counter</h1>
+      <p class="page-subheading">A continuous second-by-second countdown starting from my wedding day.</p>
+    </header>
+
+    <div
+      class="seconds-display-container"
+      aria-label="Seconds counter"
+    >
+
+      <div class="seconds-display-icon" aria-hidden="true">
+        <InfinityIcon variant="duotone" width={48} height={24} />
+      </div>
+
+      <p class="metric-label">
+        Current Count
+      </p>
+      <div
+        id="count-seconds"
+        class="seconds-display tabular-nums"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="Loading seconds"
+        role="timer"
+      >—</div>
+
+    </div>
+
+    <div class="card summary-card">
+      <p class="metric-label metric-label-compact">
+        Uptime
+      </p>
+      <p
+        id="count-summary"
+        class="summary-value tabular-nums"
+        aria-live="polite"
+        aria-atomic="true"
+        aria-label="Loading uptime summary"
+      >—</p>
+    </div>
+
+    <WeddingInfoSection />
+
+    <div class="details-actions">
+      <PageActionLinks secondaryHref="/journey" secondaryLabel="View journey" />
+    </div>
+
+  </div>
+
+  <script>
+    import "../scripts/count.ts";
+  </script>
+</BaseLayout>

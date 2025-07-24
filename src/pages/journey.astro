@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeUnitCard from "../components/TimeUnitCard.astro";
+import WeddingInfoSection from "../components/WeddingInfoSection.astro";
+import PageActionLinks from "../components/PageActionLinks.astro";
+import LinkedRingsIcon from "../components/icons/LinkedRingsIcon.astro";
+import { TIME_UNITS } from "../lib/wedding-details.js";
+
+const featuredUnits = TIME_UNITS.filter((unit) => unit.featured);
+const detailUnits = TIME_UNITS.filter((unit) => !unit.featured);
+---
+
+<BaseLayout
+  title={`Time Journey`}
+  description="Tracking the beautiful progression of time from my wedding day onward."
+  currentPath="/journey"
+>
+  <div class="container page-shell">
+
+    <header class="page-header page-header-wide">
+      <h1 class="page-heading page-heading-spaced">Time Journey</h1>
+      <p class="page-subheading">Tracking the beautiful progression of time from my wedding day onward.</p>
+    </header>
+
+    <div class="timer-board">
+
+      <div class="time-grid time-grid-featured" aria-label="Years and months elapsed">
+        {featuredUnits.map((unit) => (
+          <TimeUnitCard unit={unit.label} id={unit.key} variant="card-large" />
+        ))}
+      </div>
+
+      <div class="section-divider section-divider-timer" aria-hidden="true">
+        <div class="section-divider-line"></div>
+        <span class="section-divider-icon">
+          <LinkedRingsIcon />
+        </span>
+        <div class="section-divider-line"></div>
+      </div>
+
+      <div
+        class="time-grid time-grid-detail"
+        aria-label="Days, hours, minutes, and seconds elapsed"
+      >
+        {detailUnits.map((unit) => (
+          <TimeUnitCard unit={unit.label} id={unit.key} />
+        ))}
+      </div>
+    </div>
+
+    <WeddingInfoSection />
+
+    <div class="details-actions">
+      <PageActionLinks secondaryHref="/seconds" secondaryLabel="View seconds" />
+    </div>
+
+  </div>
+
+  <script>
+    import "../scripts/timer.ts";
+  </script>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import type { TimeUnitKey, TimeUnitLabel } from "../lib/wedding-details";
+
+interface Props {
+  unit: TimeUnitLabel;
+  id: TimeUnitKey;
+  variant?: "card-large";
+}
+
+const { unit, id, variant = "" } = Astro.props;
+const valueId = `time-val-${id}`;
+---
+
+<div
+  class:list={["time-unit-card", variant]}
+  tabindex="0"
+  role="group"
+  aria-label={`${unit} counter`}
+>
+  <span
+    id={valueId}
+    class="time-unit-value tabular-nums"
+    aria-live="polite"
+    aria-atomic="true"
+    aria-label={`${unit}: loading`}
+  >—</span>
+  <span class="time-unit-label" aria-hidden="true">{unit}</span>
+</div>

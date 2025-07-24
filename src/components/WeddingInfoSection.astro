@@ -1,0 +1,21 @@
+---
+import LiveStatus from "./LiveStatus.astro";
+import { WEDDING_DETAILS } from "../lib/wedding-details.js";
+---
+
+<section class="details-panel" aria-label="Wedding details">
+  <div class="info-section">
+    <div class="info-row">
+      <span class="info-label">Status</span>
+      <span class="info-value"><LiveStatus /></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Wedding date</span>
+      <span class="info-value">{WEDDING_DETAILS.displayDate}</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Wedding time</span>
+      <span class="info-value">{WEDDING_DETAILS.displayTime}</span>
+    </div>
+  </div>
+</section>
