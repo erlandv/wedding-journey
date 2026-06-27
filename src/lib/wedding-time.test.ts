@@ -242,12 +242,21 @@ describe("formatElapsedDaySummary", () => {
     })).toBe("1,000 days, 2 hours, 3 minutes");
   });
 
-  it("omits zero lower units once higher units are present", () => {
+  it("includes hours and minutes once days are present", () => {
     expect(formatElapsedDaySummary({
       totalDays: 1,
       hours: 0,
       minutes: 0,
       seconds: 0,
-    })).toBe("1 day");
+    })).toBe("1 day, 0 hours, 0 minutes");
+  });
+
+  it("includes minutes once hours are present", () => {
+    expect(formatElapsedDaySummary({
+      totalDays: 0,
+      hours: 1,
+      minutes: 0,
+      seconds: 0,
+    })).toBe("1 hour, 0 minutes");
   });
 });

@@ -163,15 +163,18 @@ export function formatElapsedDaySummary(summary: ElapsedDaySummary): string {
 
   if (summary.totalDays > 0) {
     parts.push(formatDurationPart(summary.totalDays, "day", true));
-  }
-  if (summary.hours > 0) {
     parts.push(formatDurationPart(summary.hours, "hour"));
-  }
-  if (summary.minutes > 0 || parts.length === 0) {
     parts.push(formatDurationPart(summary.minutes, "minute"));
+    return parts.join(", ");
   }
 
-  return parts.join(", ");
+  if (summary.hours > 0) {
+    parts.push(formatDurationPart(summary.hours, "hour"));
+    parts.push(formatDurationPart(summary.minutes, "minute"));
+    return parts.join(", ");
+  }
+
+  return formatDurationPart(summary.minutes, "minute");
 }
 
 function daysInMonth(year: number, month: number): number {
