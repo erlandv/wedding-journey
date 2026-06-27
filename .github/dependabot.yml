@@ -1,0 +1,41 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: monthly
+      time: "09:00"
+      timezone: Asia/Bangkok
+    open-pull-requests-limit: 3
+    labels:
+      - dependencies
+      - npm
+    commit-message:
+      prefix: deps
+      include: scope
+    groups:
+      astro-tooling:
+        patterns:
+          - astro
+          - "@astrojs/*"
+          - typescript
+        update-types:
+          - minor
+          - patch
+      test-tooling:
+        patterns:
+          - vitest
+        update-types:
+          - minor
+          - patch
+      runtime-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
