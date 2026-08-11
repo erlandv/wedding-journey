@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { WEDDING_DETAILS } from "../lib/wedding-details.js";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 interface Props {
   title: string;
@@ -42,10 +43,21 @@ const ogDesc = description;
     />
 
     <title>{title}</title>
+
+    {/* Anti-FOUC: apply saved theme before first paint */}
+    <script is:inline>
+      (function () {
+        var saved = localStorage.getItem("theme");
+        var preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", saved || preferred);
+      })();
+    </script>
   </head>
   <body>
+    <ThemeToggle />
     <main>
       <slot />
     </main>
   </body>
 </html>
+
