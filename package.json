@@ -11,16 +11,21 @@
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
+    "tsc:check": "node node_modules/typescript-7/bin/tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "astro": "^7.2.9",
-    "canvas-confetti": "^1.9.4",
-    "typescript": "^6.0.3"
+    "canvas-confetti": "^1.9.4"
   },
   "devDependencies": {
     "@types/canvas-confetti": "^1.9.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.0",
+    "typescript-7": "npm:typescript@^7.0.0",
     "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true
   }
 }
