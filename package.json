@@ -15,8 +15,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
-    "astro": "^7.4.4",
+    "@astrojs/check": "^0.9.12",
+    "astro": "^7.4.5",
     "canvas-confetti": "^1.9.4"
   },
   "devDependencies": {
